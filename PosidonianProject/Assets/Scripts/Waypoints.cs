@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Waypoints : MonoBehaviour
 {
+    #region VARIABLES
     public static Transform[] points;
+    #endregion
 
+    #region AWAKE
     private void Awake()
     {
         points = new Transform[transform.childCount];
@@ -15,4 +18,5 @@ public class Waypoints : MonoBehaviour
             points[i] = transform.GetChild(i);
         }
     }
+    #endregion
 }
