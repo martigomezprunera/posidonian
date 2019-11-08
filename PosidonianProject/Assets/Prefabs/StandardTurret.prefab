@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 5487456343714135765}
   - component: {fileID: 1642706535}
   m_Layer: 0
-  m_Name: EelTurret
+  m_Name: StandardTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,7 +83,7 @@ MonoBehaviour:
   turnSpeed: 10
   bulletPrefab: {fileID: 6290812770293820953, guid: 4a256c3ae7c40a243802919e22321e8e,
     type: 3}
-  FirePoint: {fileID: 0}
+  FirePoint: {fileID: 1921851888}
 --- !u!1 &5487456344370380242
 GameObject:
   m_ObjectHideFlags: 0
