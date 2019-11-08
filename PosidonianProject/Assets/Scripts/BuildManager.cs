@@ -10,6 +10,7 @@ public class BuildManager : MonoBehaviour
     private GameObject turretToBuild;
 
     public GameObject standardTurretPrefab;
+    public GameObject anotherTurretPrefab;
     #endregion
 
     #region AWAKE
@@ -22,18 +23,17 @@ public class BuildManager : MonoBehaviour
         instance = this;
     }
     #endregion
-
-    #region START
-    void Start()
-    {
-        turretToBuild = standardTurretPrefab;
-    }
-    #endregion
-
+       
     #region GETTURRETTOBUILD
     public GameObject GetTurretToBuild()
     {
         return turretToBuild;
     }
     #endregion
+
+
+    public void SetTurretToBuild(GameObject turret)
+    {
+        turretToBuild = turret;
+    }
 }
