@@ -5021,7 +5021,7 @@ PrefabInstance:
     - target: {fileID: 3676341326604186614, guid: f35e397a19df903429d903daaa4f9457,
         type: 3}
       propertyPath: m_Name
-      value: AnotherTurretItem
+      value: MissileLauncherItem
       objectReference: {fileID: 0}
     - target: {fileID: 3676341326604186613, guid: f35e397a19df903429d903daaa4f9457,
         type: 3}
@@ -5151,7 +5151,7 @@ PrefabInstance:
     - target: {fileID: 3676341326604186611, guid: f35e397a19df903429d903daaa4f9457,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PurchaseAnotherTurret
+      value: PurchaseMissileLauncher
       objectReference: {fileID: 0}
     - target: {fileID: 3676341326604186611, guid: f35e397a19df903429d903daaa4f9457,
         type: 3}
@@ -5845,7 +5845,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   standardTurretPrefab: {fileID: 5487456343714135766, guid: 8fc22126c3a606b4ca4557d3035a87aa,
     type: 3}
-  anotherTurretPrefab: {fileID: 5487456343714135766, guid: 8fc22126c3a606b4ca4557d3035a87aa,
+  missileLauncherPrefab: {fileID: 5487456343714135766, guid: 038f31d42d77df443b246c494131aac1,
     type: 3}
 --- !u!1001 &688257020
 PrefabInstance:
