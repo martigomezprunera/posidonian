@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] Transform target;
     [SerializeField] int waypointIndex = 0;
+    [SerializeField] float slowDownFactor = 0.7f;
     private bool isSlowed = false;
 
     #endregion
@@ -52,7 +53,7 @@ public class Enemy : MonoBehaviour
     {
         if (!isSlowed)
         {
-            speed *= 0.7f;
+            speed *= slowDownFactor;
         }
 
         isSlowed = true;

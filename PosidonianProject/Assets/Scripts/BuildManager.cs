@@ -7,7 +7,7 @@ public class BuildManager : MonoBehaviour
     #region VARIABLES
     public static BuildManager instance;
 
-    private GameObject turretToBuild;
+    private TurretBlueprint turretToBuild;
 
     public GameObject standardTurretPrefab;
     public GameObject missileLauncherPrefab;
@@ -24,16 +24,30 @@ public class BuildManager : MonoBehaviour
     }
     #endregion
        
-    #region GETTURRETTOBUILD
-    public GameObject GetTurretToBuild()
+    public bool CanBuild { get { return turretToBuild != null;  } }
+
+    #region BUILD TURRET ON
+    public void BuildTurretOn(Node node)
     {
-        return turretToBuild;
+        if (PlayerStats.Money < turretToBuild.cost)
+        {
+            Debug.Log("NOT ENOUGHT MONEY TO BUILD THAT!!!!!!!");
+            return;
+        }
+
+        PlayerStats.Money -= turretToBuild.cost;
+
+        GameObject turret = (GameObject)Instantiate(turretToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
+        node.turret = turret;
+
+        Debug.Log("Turret Build! Money Left:     " + PlayerStats.Money);
     }
     #endregion
 
-
-    public void SetTurretToBuild(GameObject turret)
+    #region SELECT TURRET TO BUILD
+    public void SelectTurretToBuild(TurretBlueprint turret)
     {
         turretToBuild = turret;
     }
+    #endregion
 }
