@@ -23,15 +23,15 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
-        doMovement = false;
+        //doMovement = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-            //doMovement = !doMovement;
-            doMovement = false;
+            doMovement = !doMovement;
+            //doMovement = false;
 
         if (!doMovement)
             return;
