@@ -21,11 +21,17 @@ public class CameraController : MonoBehaviour
     public float minX = 65f;
     public float maxX = -20f;
 
+    private void Start()
+    {
+        doMovement = false;
+    }
+
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-            doMovement = !doMovement;
+            //doMovement = !doMovement;
+            doMovement = false;
 
         if (!doMovement)
             return;

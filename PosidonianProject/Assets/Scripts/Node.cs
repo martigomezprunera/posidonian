@@ -8,7 +8,7 @@ public class Node : MonoBehaviour
     #region VARIABLES
     public Color hoverColor;
     private Color startColor;
-
+    public Color notEnoughmMoneyColor;
 
     private Renderer rend;
 
@@ -39,8 +39,19 @@ public class Node : MonoBehaviour
     #region ON MOUSE DOWN
     void OnMouseDown()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
         if (!buildManager.CanBuild)
             return;
+        
+        if(buildManager.HasMoney)
+        {
+            rend.material.color = hoverColor;
+        }
+        else
+        {
+            rend.material.color = notEnoughmMoneyColor;
+        }
 
         if(turret != null)
         {
