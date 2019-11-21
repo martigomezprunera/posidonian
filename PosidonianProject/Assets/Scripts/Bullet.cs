@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
     #region VARIABLES
     private Transform target;
 
+    public int damage = 50;
     public float speed = 70f;
     public float explosionRadius = 0f;
     public GameObject impactEffect;
@@ -81,15 +82,22 @@ public class Bullet : MonoBehaviour
     #endregion
 
     #region DAMAGE
-    void Damage(Transform enemy)
+    void Damage(Transform enemyGO)
     {
-        Destroy(enemy.gameObject);
+        Enemy e = enemyGO.GetComponent<Enemy>();
+
+        if (e != null)
+        {
+            e.TakeDamage(damage);
+        }
     }
     #endregion
-
+   
+    #region GIZMOS SELECTEDS
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
+    #endregion
 }

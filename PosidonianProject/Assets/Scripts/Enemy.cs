@@ -9,7 +9,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] Transform target;
     [SerializeField] int waypointIndex = 0;
     [SerializeField] float slowDownFactor = 0.7f;
+    public GameObject deathEffect;
     private bool isSlowed = false;
+    public int health = 100;
+
+    public int value = 50;
 
     #endregion
 
@@ -39,7 +43,7 @@ public class Enemy : MonoBehaviour
     {
         if(waypointIndex >= Waypoints.points.Length - 1)
         {
-            Destroy(gameObject);
+            EndPath();
             return;
         }
 
@@ -60,4 +64,35 @@ public class Enemy : MonoBehaviour
         
     }
     #endregion
+
+    #region END PATH
+    void EndPath()
+    {
+        PlayerStats.Lives--;
+        Destroy(gameObject);
+    }
+    #endregion
+
+    #region TAKE DAMAGE
+    public void TakeDamage(int amount)
+    {
+        health -= amount;
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+    #endregion
+
+    #region DIE
+    void Die()
+    {
+        PlayerStats.Money += value;
+        
+        GameObject effect = (GameObject)Instantiate(deathEffect,  transform.position, Quaternion.identity );
+        Destroy(effect, 5f);
+        Destroy(gameObject);
+    }
+    #endregion
+
 }

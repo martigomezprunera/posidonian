@@ -107,3 +107,8 @@ MonoBehaviour:
   speed: 10
   target: {fileID: 0}
   waypointIndex: 0
+  slowDownFactor: 0.7
+  deathEffect: {fileID: 5886122155849210331, guid: 5bdac7d324c19c44b8adc96203507ec5,
+    type: 3}
+  health: 100
+  value: 50
