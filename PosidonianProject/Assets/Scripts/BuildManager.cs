@@ -8,10 +8,7 @@ public class BuildManager : MonoBehaviour
     public static BuildManager instance;
 
     private TurretBlueprint turretToBuild;
-
-    public GameObject standardTurretPrefab;
-    public GameObject missileLauncherPrefab;
-
+    
     public GameObject buildEffect;
     #endregion
 

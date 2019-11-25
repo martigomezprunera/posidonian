@@ -9,6 +9,7 @@ public class Shop : MonoBehaviour
 
     public TurretBlueprint standardTurret;
     public TurretBlueprint missileLauncher;
+    public TurretBlueprint laserTurret;
 
     BuildManager buildManager;
     #endregion
@@ -35,4 +36,13 @@ public class Shop : MonoBehaviour
         buildManager.SelectTurretToBuild(missileLauncher);
     }
     #endregion
+
+    #region PURCHASE LASER TURRET
+    public void SelectLaserTurret()
+    {
+        Debug.Log("Laser Turret selected!");
+        buildManager.SelectTurretToBuild(laserTurret);
+    }
+    #endregion
+
 }
