@@ -5,53 +5,30 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     #region VARIABLES
-    [SerializeField] float speed;
-    [SerializeField] Transform target;
-    [SerializeField] int waypointIndex = 0;
-    [SerializeField] float slowDownFactor = 0.7f;
-    public GameObject deathEffect;
+    public float startSpeed = 10f;
+    [HideInInspector]
+    public float speed;
+
+    public float slowDownFactor = 0.7f;
+     
     private bool isSlowed = false;
-    public int health = 100;
 
-    public int value = 50;
+    public float health = 100;
+
+    public int worth = 50;
+
+
+    public GameObject deathEffect;
 
     #endregion
 
-    #region  START
-    // Start is called before the first frame update
-    void Start()
+    #region START
+    private void Start()
     {
-        target = Waypoints.points[0];
+        speed = startSpeed;
     }
     #endregion
-
-    #region UPDATE
-    void Update()
-    {
-        Vector3 dir = target.position - transform.position;
-        transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
-
-        if(Vector3.Distance(transform.position, target.position) <= 0.4f)
-        {
-            GetNextWaypoint();
-        }
-    }
-    #endregion
-
-    #region GET NEXT WAY POINT
-    void GetNextWaypoint()
-    {
-        if(waypointIndex >= Waypoints.points.Length - 1)
-        {
-            EndPath();
-            return;
-        }
-
-        waypointIndex++;
-        target = Waypoints.points[waypointIndex];
-    }
-    #endregion
-
+    //lo usa el pulpo de tinta
     #region SLOWDOWN
     public void SlowDown()
     {
@@ -65,16 +42,8 @@ public class Enemy : MonoBehaviour
     }
     #endregion
 
-    #region END PATH
-    void EndPath()
-    {
-        PlayerStats.Lives--;
-        Destroy(gameObject);
-    }
-    #endregion
-
     #region TAKE DAMAGE
-    public void TakeDamage(int amount)
+    public void TakeDamage(float amount)
     {
         health -= amount;
         if (health <= 0)
@@ -84,10 +53,18 @@ public class Enemy : MonoBehaviour
     }
     #endregion
 
+    //lo usa el pulpo con laser 
+    #region SLOW
+    public void Slow(float pct)
+    {
+        speed = startSpeed * (1f - pct);
+    }
+    #endregion
+
     #region DIE
     void Die()
     {
-        PlayerStats.Money += value;
+        PlayerStats.Money += worth;
         
         GameObject effect = (GameObject)Instantiate(deathEffect,  transform.position, Quaternion.identity );
         Destroy(effect, 5f);

@@ -6,6 +6,7 @@ public class Turret : MonoBehaviour
 {
     #region VARIABLES
     private Transform target;
+    private Enemy targetEnemy;
 
     [Header("GENERAL")]
     public float range = 15f;
@@ -17,6 +18,10 @@ public class Turret : MonoBehaviour
 
     [Header("Use Laser")]
     public bool useLaser = false;
+    public float slowAmount = 0.5f;
+
+    public int damageOverTime = 30;
+
     public LineRenderer lineRenderer;
     public ParticleSystem impactEffect;
     public Light impactLight;
@@ -31,7 +36,6 @@ public class Turret : MonoBehaviour
     
     public Transform FirePoint;
     #endregion
-
 
     #region START
     void Start()
@@ -61,6 +65,7 @@ public class Turret : MonoBehaviour
         if (nearestEnemy != null && shortestDistance <= range)
         {
             target = nearestEnemy.transform;
+            targetEnemy = nearestEnemy.GetComponent<Enemy>();
         }
         else
         {
@@ -110,6 +115,10 @@ public class Turret : MonoBehaviour
     #region LASER
     void Laser()
     {
+
+        targetEnemy.TakeDamage(damageOverTime * Time.deltaTime);
+        targetEnemy.Slow(slowAmount);
+
         if (!lineRenderer.enabled)
         {        
             lineRenderer.enabled = true;
@@ -117,11 +126,13 @@ public class Turret : MonoBehaviour
             impactLight.enabled = true;
         }
 
+        //pintar laser
         lineRenderer.SetPosition(0, FirePoint.position);
         lineRenderer.SetPosition(1, target.position);
 
         Vector3 dir = FirePoint.position - target.position;
 
+        //efectos y luces
         impactEffect.transform.position = target.position + dir.normalized ;
 
         impactEffect.transform.rotation = Quaternion.LookRotation(dir);
