@@ -11,6 +11,14 @@ public class TurretBlueprint
 
     public GameObject upgradedPrefab;
     public int upgradeCost;
+
+    #endregion
+
+    #region GET SELL AMOUNT
+    public int GetSellAmount()
+    {
+        return cost / 2;
+    }
     #endregion
 
 }

@@ -7290,6 +7290,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildEffect: {fileID: 9188200530111920280, guid: fe5f0763005df344786c6346fb1d09f2,
     type: 3}
+  sellEffect: {fileID: 7345747930089044174, guid: 227a3512a78a95446bad0b090000b277,
+    type: 3}
   nodeUI: {fileID: 1659873293}
 --- !u!114 &687532422
 MonoBehaviour:
@@ -13134,14 +13136,16 @@ MonoBehaviour:
     prefab: {fileID: 5487456343714135766, guid: 038f31d42d77df443b246c494131aac1,
       type: 3}
     cost: 250
-    upgradedPrefab: {fileID: 0}
-    upgradeCost: 0
+    upgradedPrefab: {fileID: 5487456343714135766, guid: f11c495415b12ee438795894ff06ce9c,
+      type: 3}
+    upgradeCost: 150
   laserTurret:
     prefab: {fileID: 6072025140624099081, guid: 5cb947f62d39edb4eb60a001415453e2,
       type: 3}
     cost: 350
-    upgradedPrefab: {fileID: 0}
-    upgradeCost: 0
+    upgradedPrefab: {fileID: 6072025140624099081, guid: b1185184988212148ad96bcf12a3e752,
+      type: 3}
+    upgradeCost: 250
 --- !u!4 &1215884392 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7293230060605892238, guid: ab8d7144d3c6b4641a024c548216985a,
@@ -15951,7 +15955,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1420632767}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1659873293}
+        m_MethodName: Sell
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1420632767
@@ -19265,6 +19280,7 @@ MonoBehaviour:
   ui: {fileID: 813322020}
   upgradeCost: {fileID: 537372682}
   upgradeButton: {fileID: 1959913403}
+  sellAmount: {fileID: 1681889707}
 --- !u!1001 &1662131078
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19363,7 +19379,7 @@ GameObject:
   - component: {fileID: 1681889708}
   - component: {fileID: 1681889707}
   m_Layer: 0
-  m_Name: Cost
+  m_Name: Amount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

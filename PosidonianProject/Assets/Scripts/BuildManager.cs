@@ -12,6 +12,7 @@ public class BuildManager : MonoBehaviour
     private Node selectedNode;
 
     public GameObject buildEffect;
+    public GameObject sellEffect;
 
     public NodeUI nodeUI;
     #endregion

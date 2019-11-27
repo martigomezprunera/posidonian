@@ -123,6 +123,18 @@ public class Node : MonoBehaviour
     }
     #endregion
 
+    #region SELL TURRET
+    public void SellTurret()
+    {
+        PlayerStats.Money += turretBlueprint.GetSellAmount();
+
+        GameObject effect = (GameObject)Instantiate(buildManager.sellEffect, GetBuildPosition(), Quaternion.identity);
+        Destroy(effect, 5f);
+
+        Destroy(turret);
+        turretBlueprint = null;
+    }
+    #endregion
 
     #region ON MOUSE ENTER
     void OnMouseEnter()

@@ -11,6 +11,8 @@ public class NodeUI : MonoBehaviour
     public Text upgradeCost;
     public Button upgradeButton;
 
+    public Text sellAmount;
+
     private Node target;
     #endregion
 
@@ -32,6 +34,8 @@ public class NodeUI : MonoBehaviour
             upgradeButton.interactable = false;
         }
 
+        sellAmount.text = target.turretBlueprint.GetSellAmount() + "O2";
+
         ui.SetActive(true);
     }
     #endregion
@@ -47,6 +51,14 @@ public class NodeUI : MonoBehaviour
     public void Upgrade()
     {
         target.UpgradeTurret();
+        BuildManager.instance.DeselectNode();
+    }
+    #endregion
+
+    #region SELL
+    public void Sell()
+    {
+        target.SellTurret();
         BuildManager.instance.DeselectNode();
     }
     #endregion
