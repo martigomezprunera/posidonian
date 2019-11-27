@@ -41,9 +41,13 @@ public class Node : MonoBehaviour
     {
         if (EventSystem.current.IsPointerOverGameObject())
             return;
-        if (!buildManager.CanBuild)
+
+         if(turret != null)
+        {
+            buildManager.SelectNode(this);
             return;
-        
+        }
+
         if(buildManager.HasMoney)
         {
             rend.material.color = hoverColor;
@@ -52,12 +56,10 @@ public class Node : MonoBehaviour
         {
             rend.material.color = notEnoughmMoneyColor;
         }
+              
 
-        if(turret != null)
-        {
-            Debug.Log("Can't build a turret there! - TODO: Display on screen");
+        if (!buildManager.CanBuild)
             return;
-        }
 
         //Build a turret
         buildManager.BuildTurretOn(this);
