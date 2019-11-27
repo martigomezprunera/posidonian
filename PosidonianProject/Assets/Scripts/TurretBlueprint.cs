@@ -8,6 +8,9 @@ public class TurretBlueprint
     #region VARIBLES
     public GameObject prefab;
     public int cost;
+
+    public GameObject upgradedPrefab;
+    public int upgradeCost;
     #endregion
 
 }
