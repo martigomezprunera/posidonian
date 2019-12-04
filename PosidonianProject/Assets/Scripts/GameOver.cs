@@ -47,4 +47,12 @@ public class GameOver : MonoBehaviour
         
     }
     #endregion
+
+    #region QUIT
+    public void QuitGame()
+    {
+        Application.Quit();
+        Debug.Log("QUIT APP");
+    }
+    #endregion
 }
