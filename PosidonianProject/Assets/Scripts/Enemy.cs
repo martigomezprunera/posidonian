@@ -19,6 +19,8 @@ public class Enemy : MonoBehaviour
 
 
     public GameObject deathEffect;
+    public WaveSpawner waveManager;
+    public bool inEndlessMode;
 
     #endregion
 
@@ -26,6 +28,8 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         speed = startSpeed;
+        GameObject go = GameObject.FindGameObjectWithTag("GameMaster");
+        waveManager = go.GetComponent<WaveSpawner>();
     }
     #endregion
     //lo usa el pulpo de tinta
@@ -65,6 +69,7 @@ public class Enemy : MonoBehaviour
     void Die()
     {
         PlayerStats.Money += worth;
+        waveManager.DecreaseEnemy();        
         
         GameObject effect = (GameObject)Instantiate(deathEffect,  transform.position, Quaternion.identity );
         Destroy(effect, 5f);

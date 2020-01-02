@@ -6,6 +6,7 @@ using UnityEngine;
 public class WaveSpawner : MonoBehaviour
 {
     #region VARIABLES
+    [SerializeField] GameObject winCanvas;
     public Transform enemyPrefab;
     public Transform spawnPoint;
 
@@ -16,8 +17,11 @@ public class WaveSpawner : MonoBehaviour
 
     public Text waveCountdownText;
 
-    private int waveIndex = 0;
-    
+    public int waveIndex = 0;
+
+    [SerializeField] int MaxWaves;
+    bool firstEnemySpawned = false;
+    public int numOfEnemies = 0;
 
     #endregion
 
@@ -26,6 +30,7 @@ public class WaveSpawner : MonoBehaviour
     {
         if(countdown <= 0f)
         {
+            firstEnemySpawned = false;
             StartCoroutine(SpawnWave());
             countdown = timeBetweenWaves;
         }
@@ -35,6 +40,14 @@ public class WaveSpawner : MonoBehaviour
         countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
 
         waveCountdownText.text = string.Format("{0:00.00}", countdown);
+
+        if (waveIndex == MaxWaves && firstEnemySpawned && numOfEnemies <= 0)
+        {
+            Debug.Log("WIN!!!!!!!!");
+            winCanvas.SetActive(true);
+
+        }
+        Debug.Log(numOfEnemies);
     }
     #endregion
 
@@ -48,6 +61,8 @@ public class WaveSpawner : MonoBehaviour
         for (int i = 0; i < waveIndex; i++)
         {
             SpawnEnemy();
+            numOfEnemies++;
+            firstEnemySpawned = true;
             yield return new WaitForSeconds(timeBetweenEnemies);
         }
     }
@@ -57,6 +72,13 @@ public class WaveSpawner : MonoBehaviour
     void SpawnEnemy()
     {
         Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+    }
+    #endregion
+
+    #region DECREASE ENEMY
+    public void DecreaseEnemy()
+    {
+        numOfEnemies--;
     }
     #endregion
 }
