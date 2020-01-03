@@ -628,7 +628,9 @@ MonoBehaviour:
   sceneMenu: MainMenu
   sceneEndless: LevelEndless
   sceneLevel1: Level1
-  sceneLevel2: LevelEndless
+  sceneLevel2: Level2
+  waveController: {fileID: 0}
+  waves: {fileID: 0}
 --- !u!4 &592723514
 Transform:
   m_ObjectHideFlags: 0
@@ -1467,6 +1469,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Text
       value: LEVELS
+      objectReference: {fileID: 0}
+    - target: {fileID: 6813805566248609528, guid: 1ee0bebad631e3d4295900cc5cc2f681,
+        type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6813805566738020383, guid: 1ee0bebad631e3d4295900cc5cc2f681,
         type: 3}
